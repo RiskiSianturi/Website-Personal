@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Riski Sianturi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080f; --surface: rgba(255,255,255,0.04);
+      --surface-hv: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.08); --border-hv: rgba(201,168,76,0.45);
+      --gold: #c9a84c; --gold-light: #e8cc80;
+      --text-1: #f0ece3; --text-2: #9a9589; --text-3: #5a5650;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg); color: var(--text-1);
+      min-height: 100vh; padding: 40px 20px;
+    }
+    .noise {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 180px; opacity: 0.6;
+    }
+    .glow-orb { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
+    .orb-1 { width:500px;height:500px; background:radial-gradient(circle,rgba(201,168,76,0.1) 0%,transparent 70%); top:-150px;right:-150px; }
+    .orb-2 { width:400px;height:400px; background:radial-gradient(circle,rgba(80,120,200,0.07) 0%,transparent 70%); bottom:-100px;left:-100px; }
+
+    .portfolio-wrapper { position:relative;z-index:1; max-width:900px; margin:0 auto; }
+
+    .portfolio-header { margin-bottom:40px; }
+    .back-btn {
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:0.8rem;color:var(--text-2);text-decoration:none;
+      letter-spacing:0.05em;margin-bottom:20px;transition:color 0.2s;
+    }
+    .back-btn:hover { color:var(--gold); }
+    .page-title { font-family:'Playfair Display',serif; font-size:2.4rem;font-weight:600;color:var(--text-1);margin-bottom:6px; }
+    .page-subtitle { font-size:0.78rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase; }
+
+    .divider { height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:28px 0; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      transition:all 0.3s ease;
+      animation:cardIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .project-card:nth-child(1){animation-delay:0.05s}
+    .project-card:nth-child(2){animation-delay:0.10s}
+    .project-card:nth-child(3){animation-delay:0.15s}
+    .project-card:nth-child(4){animation-delay:0.20s}
+    .project-card:nth-child(5){animation-delay:0.25s}
+    .project-card:nth-child(6){animation-delay:0.30s}
+    @keyframes cardIn {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .project-card:hover {
+      border-color:var(--border-hv);
+      transform:translateY(-6px);
+      box-shadow:0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.08);
+    }
+
+    .project-thumb {
+      width:100%; aspect-ratio:16/9;
+      object-fit:cover; display:block;
+      transition:transform 0.4s ease;
+    }
+    .project-card:hover .project-thumb { transform:scale(1.04); }
+
+    .project-body { padding:16px 18px 20px; }
+    .project-number {
+      font-size:0.68rem;color:var(--gold);
+      letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;
+    }
+    .project-name {
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem;color:var(--text-1);margin-bottom:6px;
+    }
+    .project-desc { font-size:0.82rem;color:var(--text-2);line-height:1.6; }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <div class="portfolio-wrapper">
+    <div class="portfolio-header">
+      <a href="index.html" class="back-btn">← Back</a>
+      <h1 class="page-title">Portfolio</h1>
+      <p class="page-subtitle">Selected Works</p>
+    </div>
+    <div class="divider"></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/RiskiSianturi/Website-Personal/main/project-1.jpg" alt="Project 1" class="project-thumb">
+        <div class="project-body">
+          <p class="project-number">Project 01</p>
+          <h2 class="project-name">Project 1</h2>
+          <p class="project-desc">Description of Project 1</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/RiskiSianturi/Website-Personal/main/project-2.png" alt="Project 2" class="project-thumb">
+        <div class="project-body">
+          <p class="project-number">Project 02</p>
+          <h2 class="project-name">Project 2</h2>
+          <p class="project-desc">Description of Project 2</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/RiskiSianturi/Website-Personal/main/project-3.jpg" alt="Project 3" class="project-thumb">
+        <div class="project-body">
+          <p class="project-number">Project 03</p>
+          <h2 class="project-name">Project 3</h2>
+          <p class="project-desc">Description of Project 3</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/RiskiSianturi/Website-Personal/main/project-4.png" alt="Project 4" class="project-thumb">
+        <div class="project-body">
+          <p class="project-number">Project 04</p>
+          <h2 class="project-name">Project 4</h2>
+          <p class="project-desc">Description of Project 4</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/RiskiSianturi/Website-Personal/main/project-5.png" alt="Project 5" class="project-thumb">
+        <div class="project-body">
+          <p class="project-number">Project 05</p>
+          <h2 class="project-name">Project 5</h2>
+          <p class="project-desc">Description of Project 5</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/RiskiSianturi/Website-Personal/main/project-6.png" alt="Project 6" class="project-thumb">
+        <div class="project-body">
+          <p class="project-number">Project 06</p>
+          <h2 class="project-name">Project 6</h2>
+          <p class="project-desc">Description of Project 6</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
